@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h3>Customers</h3>
+<p>
+  <a th:href="@{/product/create}">
+    Add new Product
+  </a>
+</p>
+<form action="#" th:action="@{/product/search}" method="post">
+  <input type="text" name="nameProduct" >
+</form>
+
+<table>
+  <tr>
+    <td>name</td>
+    <td>price</td>
+    <td>NSX</td>
+  </tr>
+  <th:block>
+    <tr th:each="list : ${listProduct}">
+      <td th:text="${list.name}"></td>
+      <td th:text="${list.price}"></td>
+      <td th:text="${list.nxs}"></td>
+      <td><a th:href="@{/product/{id}/edit(id=${list.id})}">edit</a></td>
+      <td><a th:href="@{/product/{id}/delete(id=${list.id})}">delete</a></td>
+      <td><a th:href="@{/product/{id}/view(id=${list.id})}">view</a></td>
+    </tr>
+  </th:block>
+</table>
+</body>
